@@ -6,6 +6,7 @@ export interface TransactionData {
   type: TransactionType;
   category: TransactionCategory;
   total: number;
+  balance: number;
   date: number;
 }
 
@@ -28,6 +29,7 @@ const TransactionList = () => {
       title: "Paycheck",
       type: TransactionType.deposit,
       total: 450.5,
+      balance: 450.5,
       date: Date.now(),
       category: TransactionCategory.paycheck,
     },
@@ -36,6 +38,7 @@ const TransactionList = () => {
       title: "Netflix",
       type: TransactionType.expense,
       total: 15.99,
+      balance: 434.51,
       date: Date.now(),
       category: TransactionCategory.entertainment,
     },
@@ -44,6 +47,7 @@ const TransactionList = () => {
       title: "McDonald's",
       type: TransactionType.expense,
       total: 12.71,
+      balance: 421.8,
       date: Date.now(),
       category: TransactionCategory.food,
     },
@@ -53,7 +57,7 @@ const TransactionList = () => {
     <>
       <h2 className="text-xl font-bold">Transactions</h2>
       <div className="w-1/3">
-        {transactions.map((t) => (
+        {transactions.reverse().map((t) => (
           <Transaction transaction={t} />
         ))}
       </div>

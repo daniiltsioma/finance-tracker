@@ -2,7 +2,7 @@ import { useState } from "react";
 import TransactionList from "./components/transactions/TransactionList";
 
 function App() {
-  const [balance] = useState(20);
+  const [balance] = useState(421.8);
 
   return (
     <div className="App p-8">
