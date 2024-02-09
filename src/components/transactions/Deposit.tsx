@@ -25,6 +25,7 @@ const Deposit = () => {
         <div className="mt-6">
           <form onSubmit={onSubmit}>
             <Input id="title" type="text" placeholder="Title" />
+            <Input id="total" type="number" placeholder="Total" pre="$" />
             <RadioInput id="type" options={[0, 1]} label="Select type" />
           </form>
         </div>
