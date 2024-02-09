@@ -58,7 +58,7 @@ const TransactionList = () => {
   return (
     <>
       <h2 className="text-xl font-bold">Transactions</h2>
-      <div className="w-1/3">
+      <div className="w-[400px]">
         {transactions.reverse().map((t) => (
           <Transaction transaction={t} />
         ))}
