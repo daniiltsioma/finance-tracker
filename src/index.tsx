@@ -6,6 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TransactionList from "./components/transactions/TransactionList";
+import { loader as transactionListLoader } from "./components/transactions/TransactionList";
 import Deposit from "./components/transactions/Deposit";
 import Expense from "./components/transactions/Expense";
 
@@ -17,6 +18,7 @@ const routes = [
       {
         path: "/",
         element: <TransactionList />,
+        loader: transactionListLoader,
       },
       {
         path: "/deposit",

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Transaction from "./Transaction";
 
 export interface TransactionData {
@@ -24,8 +24,8 @@ export enum TransactionCategory {
   transportation,
 }
 
-const TransactionList = () => {
-  const transactions: TransactionData[] = [
+export const loader = async () => {
+  return [
     {
       id: 0,
       title: "Paycheck",
@@ -54,13 +54,17 @@ const TransactionList = () => {
       category: TransactionCategory.food,
     },
   ];
+};
+
+const TransactionList = () => {
+  const transactions = useLoaderData() as TransactionData[];
 
   return (
     <>
       <h2 className="text-xl font-bold">Transactions</h2>
       <div className="w-[400px]">
         {transactions.reverse().map((t) => (
-          <Transaction transaction={t} />
+          <Transaction transaction={t} key={t.id} />
         ))}
         <div className="flex">
           <Link
