@@ -61,6 +61,7 @@ const Deposit = () => {
               options={[0, 1]}
               label="Select category"
               errorMessage={methods.formState.errors.category?.message?.toString()}
+              colorClasses="border-green-600 text-green-600 peer-checked:bg-green-600"
             />
             <button className="border-green-600 hover:border-green-700 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-sm mt-8">
               Submit

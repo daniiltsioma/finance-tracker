@@ -49,7 +49,7 @@ const TransactionList = ({ transactions }: TransactionListProps) => {
             Add Deposit
           </Link>
           <Link
-            className="border-red-700 bg-red-700 text-white text-center px-8 py-2 rounded-sm"
+            className="border-orange-600 bg-orange-600 text-white text-center px-8 py-2 rounded-sm"
             to="/expense"
           >
             Add Expense

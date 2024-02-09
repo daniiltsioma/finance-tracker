@@ -6,17 +6,26 @@ interface RadioInputProps {
   options: number[];
   label: string;
   errorMessage?: string;
+  colorClasses?: string;
 }
 
-const RadioInput = ({ id, options, label, errorMessage }: RadioInputProps) => {
+const RadioInput = ({
+  id,
+  options,
+  label,
+  errorMessage,
+  colorClasses = "border-black text-black",
+}: RadioInputProps) => {
   const { register } = useFormContext();
 
   return (
     <div>
-      <div className="flex items-center">
-        <div className={`${errorMessage && "text-red-600"}`}>{label}:</div>
+      <div className="flex items-center flex-wrap">
+        <div className={`${errorMessage && "text-red-600"} mb-2 mr-2`}>
+          {label}:
+        </div>
         {options.map((op) => (
-          <div className="ml-2" key={op}>
+          <div className="mr-2" key={op}>
             <input
               type="radio"
               {...register(id, {
@@ -33,7 +42,7 @@ const RadioInput = ({ id, options, label, errorMessage }: RadioInputProps) => {
             />
             <label
               htmlFor={`${id}-${op}`}
-              className="border-green-600 border-2 text-green-600 px-4 py-2 peer-checked:bg-green-600 peer-checked:text-white cursor-pointer rounded-sm"
+              className={`inline-block ${colorClasses} border-2 px-4 py-1 mb-2 peer-checked:text-white cursor-pointer rounded-sm`}
             >
               {TransactionCategory[op]}
             </label>

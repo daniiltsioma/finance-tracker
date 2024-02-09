@@ -28,6 +28,7 @@ const Input = ({
           id={id}
           type={type}
           placeholder={placeholder}
+          step={type === "number" ? 0.01 : undefined}
           {...register(id, {
             required: {
               value: true,
