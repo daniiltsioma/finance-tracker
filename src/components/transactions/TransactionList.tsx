@@ -25,35 +25,8 @@ export enum TransactionCategory {
 }
 
 export const loader = async () => {
-  return [
-    {
-      id: 0,
-      title: "Paycheck",
-      type: TransactionType.deposit,
-      total: 450.5,
-      balance: 450.5,
-      date: Date.now(),
-      category: TransactionCategory.paycheck,
-    },
-    {
-      id: 1,
-      title: "Netflix",
-      type: TransactionType.expense,
-      total: 15.99,
-      balance: 434.51,
-      date: Date.now(),
-      category: TransactionCategory.entertainment,
-    },
-    {
-      id: 2,
-      title: "McDonald's",
-      type: TransactionType.expense,
-      total: 12.71,
-      balance: 421.8,
-      date: Date.now(),
-      category: TransactionCategory.food,
-    },
-  ];
+  const transactions = localStorage.getItem("transactions");
+  return transactions ? JSON.parse(transactions).reverse() : {};
 };
 
 const TransactionList = () => {

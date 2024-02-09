@@ -28,6 +28,7 @@ const RadioInput = ({ id, options, label, errorMessage }: RadioInputProps) => {
               className={`peer hidden ${
                 errorMessage ? "border-red-300" : "border-slate-100"
               }`}
+              value={op}
               id={`${id}-${op}`}
             />
             <label

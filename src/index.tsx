@@ -5,10 +5,47 @@ import "./styles/tailwind.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import TransactionList from "./components/transactions/TransactionList";
+import TransactionList, {
+  TransactionCategory,
+  TransactionType,
+} from "./components/transactions/TransactionList";
 import { loader as transactionListLoader } from "./components/transactions/TransactionList";
 import Deposit from "./components/transactions/Deposit";
 import Expense from "./components/transactions/Expense";
+
+const defaultTransactions = [
+  {
+    id: 0,
+    title: "Paycheck",
+    type: TransactionType.deposit,
+    total: 450.5,
+    balance: 450.5,
+    date: Date.now(),
+    category: TransactionCategory.paycheck,
+  },
+  {
+    id: 1,
+    title: "Netflix",
+    type: TransactionType.expense,
+    total: 15.99,
+    balance: 434.51,
+    date: Date.now(),
+    category: TransactionCategory.entertainment,
+  },
+  {
+    id: 2,
+    title: "McDonald's",
+    type: TransactionType.expense,
+    total: 12.71,
+    balance: 421.8,
+    date: Date.now(),
+    category: TransactionCategory.food,
+  },
+];
+
+if (!localStorage.getItem("transactions")) {
+  localStorage.setItem("transactions", JSON.stringify(defaultTransactions));
+}
 
 const routes = [
   {
