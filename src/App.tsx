@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TransactionList from "./components/transactions/TransactionList";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [balance] = useState(421.8);
@@ -12,7 +12,7 @@ function App() {
           {balance < 0 && "-"}${Math.abs(balance).toFixed(2)}
         </span>
       </div>
-      <TransactionList />
+      <Outlet />
     </div>
   );
 }

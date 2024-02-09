@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Transaction from "./Transaction";
 
 export interface TransactionData {
@@ -60,6 +61,20 @@ const TransactionList = () => {
         {transactions.reverse().map((t) => (
           <Transaction transaction={t} />
         ))}
+        <div className="flex">
+          <Link
+            className="border-green-700 bg-green-700 text-white text-center px-8 py-2 rounded-sm mr-4"
+            to="/deposit"
+          >
+            Add Deposit
+          </Link>
+          <Link
+            className="border-red-700 bg-red-700 text-white text-center px-8 py-2 rounded-sm"
+            to="/expense"
+          >
+            Add Expense
+          </Link>
+        </div>
       </div>
     </>
   );

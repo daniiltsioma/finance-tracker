@@ -4,13 +4,40 @@ import "./index.css";
 import "./styles/tailwind.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import TransactionList from "./components/transactions/TransactionList";
+import Deposit from "./components/transactions/Deposit";
+import Expense from "./components/transactions/Expense";
+
+const routes = [
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <TransactionList />,
+      },
+      {
+        path: "/deposit",
+        element: <Deposit />,
+      },
+      {
+        path: "/expense",
+        element: <Expense />,
+      },
+    ],
+  },
+];
+
+const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
