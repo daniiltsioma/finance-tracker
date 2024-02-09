@@ -18,6 +18,7 @@ export enum TransactionType {
 
 export enum TransactionCategory {
   paycheck,
+  deposit,
   entertainment,
   food,
   transportation,
