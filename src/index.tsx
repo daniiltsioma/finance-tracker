@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./styles/tailwind.css";
-import App from "./App";
+import App, { loader as appLoader } from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TransactionList, {
   TransactionCategory,
   TransactionType,
+  loader as transactionListLoader,
 } from "./components/transactions/TransactionList";
-import { loader as transactionListLoader } from "./components/transactions/TransactionList";
 import Deposit from "./components/transactions/Deposit";
 import Expense from "./components/transactions/Expense";
 
@@ -46,11 +46,15 @@ const defaultTransactions = [
 if (!localStorage.getItem("transactions")) {
   localStorage.setItem("transactions", JSON.stringify(defaultTransactions));
 }
+if (!localStorage.getItem("balance")) {
+  localStorage.setItem("balance", String(421.8));
+}
 
 const routes = [
   {
     path: "/",
     element: <App />,
+    loader: appLoader,
     children: [
       {
         path: "/",

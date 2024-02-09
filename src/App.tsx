@@ -1,8 +1,19 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
+
+interface AppLoaderData {
+  balance: number;
+}
+
+export const loader = () => {
+  return {
+    balance: Number(localStorage.getItem("balance")),
+  };
+};
 
 function App() {
-  const [balance] = useState(421.8);
+  // const [balance] = useState(421.8);
+  const { balance } = useLoaderData() as AppLoaderData;
 
   return (
     <div className="App p-8">
