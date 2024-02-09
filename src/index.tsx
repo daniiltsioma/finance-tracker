@@ -2,16 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./styles/tailwind.css";
-import App, { loader as appLoader } from "./App";
+import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import TransactionList, {
+import {
   TransactionCategory,
   TransactionType,
-  loader as transactionListLoader,
 } from "./components/transactions/TransactionList";
 import Deposit from "./components/transactions/Deposit";
 import Expense from "./components/transactions/Expense";
+import Home, { loader as homeLoader } from "./components/Home";
 
 const defaultTransactions = [
   {
@@ -54,12 +54,11 @@ const routes = [
   {
     path: "/",
     element: <App />,
-    loader: appLoader,
     children: [
       {
         path: "/",
-        element: <TransactionList />,
-        loader: transactionListLoader,
+        element: <Home />,
+        loader: homeLoader,
       },
       {
         path: "/deposit",

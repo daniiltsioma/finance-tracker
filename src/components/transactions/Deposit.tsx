@@ -1,27 +1,32 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../forms/Input";
 import RadioInput from "../forms/RadioInput";
-import { TransactionCategory, TransactionType } from "./TransactionList";
+import { TransactionType } from "./TransactionList";
 
 const Deposit = () => {
   const methods = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = methods.handleSubmit((data) => {
     const transactions = JSON.parse(
       localStorage.getItem("transactions") || "[]"
     );
+    const oldBalance = Number(localStorage.getItem("balance"));
+    const newBalance = oldBalance + Number(data.total);
     const newTransaction = {
       id: transactions.length,
       title: data.title,
       type: TransactionType.deposit,
       total: data.total,
-      balance: transactions[transactions.length - 1].balance + data.total,
+      balance: newBalance,
       category: data.category,
       date: Date.now(),
     };
     transactions.push(newTransaction);
     localStorage.setItem("transactions", JSON.stringify(transactions));
+    localStorage.setItem("balance", String(newBalance));
+    navigate("/");
   });
 
   return (

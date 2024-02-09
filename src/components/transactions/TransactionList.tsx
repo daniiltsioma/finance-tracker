@@ -1,5 +1,9 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Transaction from "./Transaction";
+
+interface TransactionListProps {
+  transactions: TransactionData[];
+}
 
 export interface TransactionData {
   id: number;
@@ -29,9 +33,7 @@ export const loader = async () => {
   return transactions ? JSON.parse(transactions).reverse() : {};
 };
 
-const TransactionList = () => {
-  const transactions = useLoaderData() as TransactionData[];
-
+const TransactionList = ({ transactions }: TransactionListProps) => {
   return (
     <>
       <h2 className="text-xl font-bold">Transactions</h2>
