@@ -19,7 +19,7 @@ export const loader = () => {
 const Home = () => {
   const { balance, transactions } = useLoaderData() as HomeLoaderData;
   return (
-    <>
+    <div className="w-[450px] mx-auto">
       <div className="text-[50px] font-bold">
         Balance:{" "}
         <span className={balance > 0 ? "text-green-700" : "text-red-700"}>
@@ -27,7 +27,7 @@ const Home = () => {
         </span>
       </div>
       <TransactionList transactions={transactions} />
-    </>
+    </div>
   );
 };
 
