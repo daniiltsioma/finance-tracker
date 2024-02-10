@@ -52,7 +52,7 @@ const TransactionList = ({ transactions }: TransactionListProps) => {
           </Link>
         </div>
         <h2 className="text-xl font-bold my-4">Transactions</h2>
-        {transactions.reverse().map((t) => (
+        {transactions.map((t) => (
           <Transaction transaction={t} key={t.id} />
         ))}
       </div>
